@@ -12,7 +12,7 @@ import expoTheme from "./theme";
 import { mergeTheme, getMargins, getPaddings } from "./utils";
 
 type BlockProps = ViewProps & {
-	flex: boolean,
+	flex: boolean | number | string,
 	noflex: boolean,
 	row: boolean,
 	column: boolean,
@@ -38,7 +38,7 @@ type BlockProps = ViewProps & {
 	info: boolean,
 	width: number | string,
 	height: number | string,
-	space: number | string,
+	space: string,
 	radius: number | string,
 	wrap: boolean,
 	style: any,
@@ -146,7 +146,7 @@ const Block = (props: BlockProps) => {
 
 	const blockStyles = StyleSheet.flatten([
 		styles.block,
-		flex && { flex: flex === true ? 1 : flex },
+		flex && { flex: flex === true ? 1 : Number(flex) },
 		(!flex || noflex) && { flex: 0 },
 		row && styles.row,
 		column && styles.column,
@@ -166,9 +166,9 @@ const Block = (props: BlockProps) => {
 			shadowOpacity: 0.1,
 			shadowRadius: elevation
 		},
-		space && { justifyContent: `space-${String(space)}` },
+		space && { justifyContent: `space-${space}` },
 		card && { borderRadius: SIZES.radius },
-		radius && { borderRadius: String(radius) },
+		radius && { borderRadius: Number(radius) },
 		// color shortcuts
 		primary && { backgroundColor: COLORS.primary },
 		secondary && { backgroundColor: COLORS.secondary },

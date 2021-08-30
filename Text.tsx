@@ -150,7 +150,7 @@ const Typography = (props: TypographyProps) => {
 		subtitle && FONTS.subtitle,
 		caption && FONTS.caption,
 		small && FONTS.small,
-		size && { fontSize: String(size) },
+		size && { fontSize: Number(size) },
 		marginSpacing,
 		paddingSpacing,
 		transform && { textTransform: transform },
