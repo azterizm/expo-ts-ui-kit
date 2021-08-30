@@ -38,7 +38,7 @@ type TypographyProps = TextProps & Partial<{
 	success: boolean,
 	info: boolean,
 	animated: boolean,
-	theme: boolean,
+	theme: any,
 	style: any,
 	children: any,
 	margin: boolean | number | string | object,
